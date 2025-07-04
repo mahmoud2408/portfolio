@@ -842,21 +842,57 @@ ul {
 /* Main - Contact */
 
 .contact-container {
-  grid-template-columns: 300px 340px;
+  /* Passe en grille */
+  display: grid;
+  /* 2 colonnes égales */
+  grid-template-columns: repeat(2, 1fr);
+  /* Espacements : 1rem vertical, 3rem horizontal */
+  row-gap: 1rem;
   column-gap: 3rem;
-  justify-content: center;
-  align-items: center;
+  /* Centre le contenu des cellules */
+  justify-items: center;
+  align-items: start;
+  /* Facultatif : largeur max pour centrer le bloc entier */
+  max-width: 800px;
+  margin: 0 auto;
 }
+
+/* Parent grid for cards */
 .contact-info {
   display: grid;
+  /* Two fixed‑width columns */
+  grid-template-columns: repeat(2, 350px);
+  /* Spacing between cards */
   row-gap: 1rem;
+  column-gap: 3rem;
+  /* Center the entire grid within its container */
+  justify-content: center;
+  align-content: center;
+  /* Optional: take full viewport height to truly center vertically */
+  min-height: 100vh;
+  margin: 0 auto;
 }
+
+/* Uniform card sizing + centered content */
 .contact-card {
+  width: 350px;
+  height: 200px;
   background-color: var(--box-color);
   padding: 1rem;
   border-radius: 0.5rem;
   text-align: center;
+  /* Center inner content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.contact-info {
+  display: grid;
+  row-gap: 1rem;
+}
+
 .contact-card-icon {
   font-size: 1.8rem;
   color: var(--title-color);
