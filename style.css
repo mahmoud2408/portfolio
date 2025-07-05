@@ -267,10 +267,15 @@ input {
   margin-left: 100px;
 }
 .home {
-  background: url("https://i.postimg.cc/DZxD1xGL/home-bg.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80");
   background-size: cover;
   background-position: center center;
   height: 100vh;
+  transition: background-position 10s ease;
+}
+.home:hover {
+  background-position: 20% center;
 }
 .home-container {
   position: relative;
