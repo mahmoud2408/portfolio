@@ -779,69 +779,148 @@ ul {
   font-size: var(--small-font-size);
 }
 
-/* Main - Testimonials */
+/* Testimonials Carousel */
+.testimonials {
+  background-color: var(--body-color);
+  padding: 6.5rem 0 2rem;
+}
 
-@media screen and (min-width: 992px) {
-  .testimonials-container {
-    width: 750px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
+.testimonial-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 400px;
 }
 
 .testimonial-card {
   background-color: var(--box-color);
-  padding: 1.8rem 2rem;
-  border-radius: 0.5rem;
-  margin-bottom: 3rem;
-}
-.testimonial-quote {
-  display: inline-flex;
-  font-size: 1.5rem;
-  color: var(--skin-color);
-  margin-bottom: var(--mb1);
-}
-.testimonial-description {
-  margin-bottom: var(--mb1);
-  font-size: var(--small-font-size);
-  text-align: justify;
-}
-.testimonial-date {
-  font-size: var(--normal-font-size);
-  margin-bottom: var(--mb2);
-}
-.testimonial-profile {
-  display: flex;
-  align-items: center;
-  column-gap: 1rem;
-}
-.testimonial-profile-img {
-  width: 60px;
-  height: 60px;
-  border-radius: 3rem;
-}
-.testimonial-profile-name {
-  font-size: var(--h3-font-size);
-  font-weight: var(--font-medium);
-  color: var(--title-color);
-}
-.testimonial-profile-detail {
-  font-size: var(--small-font-size);
-  display: block;
-}
-.testimonial-profile-data {
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.4rem;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
 }
 
-/* Swiper */
+.swiper-slide:hover .testimonial-card {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 30px;
+}
+
+.card-content .image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 5px solid var(--skin-color);
+}
+
+.card-content .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content .name-profession h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 10px;
+}
+
+.card-content .name-profession p {
+  font-size: 16px;
+  color: var(--skin-color);
+  margin-bottom: 15px;
+}
+
+.card-content .testimonial-text p {
+  font-size: 16px;
+  color: var(--text-color);
+  line-height: 1.6;
+}
 
 .swiper-pagination-bullet {
-  background-color: var(--box-color);
+  background-color: var(--text-color);
 }
+
 .swiper-pagination-bullet-active {
   background-color: var(--skin-color);
+}
+
+@media (max-width: 768px) {
+  .swiper-slide {
+    width: 250px;
+    height: auto;
+  }
+}
+
+/* Clients Carousel */
+.clients {
+  background-color: var(--body-color);
+  padding: 6.5rem 0 2rem;
+}
+
+.logosCarousel {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.logoBlock {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.carousel {
+  width: 150px;
+  height: 150px;
+  background-color: var(--box-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: var(--skin-color);
+  transition: all 0.5s ease;
+  opacity: 0.3;
+  transform: scale(0.8);
+}
+
+.carousel.active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 0 20px rgba(236, 76, 138, 0.5);
+}
+
+.carousel i {
+  transition: transform 0.3s ease;
+}
+
+.carousel:hover i {
+  transform: scale(1.2);
 }
 
 /* Main - Contact */
@@ -1260,10 +1339,7 @@ textarea.input {
     row-gap: 1.6rem;
   }
   .details-title {
-    font-size: var(--normal-font-size);
-  }
-  .portfolio-popup-close {
-    top: 0.5rem;
+    margin-bottom: var(--mb075);
   }
 }
 
@@ -1374,4 +1450,122 @@ textarea.input {
   .services-content {
     padding-right: 3.5rem;
   }
+}
+:root {
+  --bg-dark: #000;
+  --card-bg: #222;
+  --card-shadow: rgba(0, 0, 0, 0.5);
+  --accent: hsl(210, 70%, 40%);
+  --text-light: #fff;
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 2rem 1rem;
+  gap: 1rem;
+  background: var(--bg-dark);
+  scrollbar-width: none;
+}
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tech-card {
+  flex: 0 0 200px;
+  scroll-snap-align: center;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px var(--card-shadow);
+  transition: transform 0.3s;
+}
+.tech-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-inner {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-inner img {
+  width: 60px;
+  height: 60px;
+  filter: invert(1);
+  margin-bottom: 1rem;
+}
+.card-inner p {
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 1rem;
+}
+/* ... (le reste du CSS reste inchangé) ... */
+
+/* Frameworks Section */
+.frameworks {
+  background-color: var(--body-color);
+  padding: 6.5rem 0 2rem;
+}
+
+.frameworks-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.framework-category {
+  margin: 2rem;
+  text-align: center;
+}
+
+.category-title {
+  font-size: var(--h3-font-size);
+  text-align: center;
+  color: var(--skin-color);
+  margin-bottom: 1.5rem;
+}
+
+.logos-column {
+  height: 150px;
+  position: relative;
+}
+
+.logo-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background-color: var(--box-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: var(--skin-color);
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: scale(0.8);
+}
+
+.logo-item.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.logo-item i {
+  transition: transform 0.3s ease;
+}
+
+.logo-item:hover i {
+  transform: scale(1.2);
 }
