@@ -924,6 +924,9 @@ ul {
 }
 
 /* Main - Contact */
+#contact .section-title {
+  margin-bottom: 0.8rem; /* ou moins, ajuste selon ton goût */
+}
 
 .contact-container {
   /* Passe en grille */
@@ -1503,7 +1506,6 @@ textarea.input {
   font-weight: 600;
   font-size: 1rem;
 }
-/* ... (le reste du CSS reste inchangé) ... */
 
 /* Frameworks Section */
 .frameworks {
@@ -1514,7 +1516,7 @@ textarea.input {
 .frameworks-container {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 200px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
@@ -1533,15 +1535,16 @@ textarea.input {
 }
 
 .logos-column {
-  height: 150px;
   position: relative;
+  height: 150px;
+  /* plus besoin de display:flex ici */
 }
 
 .logo-item {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  left: 50%; /* place le point de référence au centre */
+  transform: translateX(-50%) /* centre horizontalement */ scale(0.8); /* conserve votre animation de scale */
   width: 150px;
   height: 150px;
   background-color: var(--box-color);
@@ -1553,12 +1556,11 @@ textarea.input {
   color: var(--skin-color);
   opacity: 0;
   transition: opacity 0.5s ease, transform 0.5s ease;
-  transform: scale(0.8);
 }
 
 .logo-item.active {
   opacity: 1;
-  transform: scale(1);
+  transform: translateX(-50%) scale(1);
   z-index: 1;
 }
 
@@ -1568,4 +1570,67 @@ textarea.input {
 
 .logo-item:hover i {
   transform: scale(1.2);
+}
+.accordion li {
+  list-style: none;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* Question label */
+.accordion label {
+  display: block;
+  background: var(--box-color);
+  padding: 1.25rem 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  text-align: left;
+  transition: background 0.3s;
+  position: relative;
+}
+
+.accordion label:hover {
+  background: var(--box-hover);
+}
+
+/* Plus / minus icon */
+.accordion label::after {
+  content: "+";
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--primary);
+  transition: transform 0.3s, content 0.3s;
+}
+
+/* Show content on hover of the entire li */
+.accordion li:hover label::after {
+  content: "–";
+}
+
+/* Hidden by default */
+.accordion .content {
+  max-height: 0;
+  overflow: hidden;
+  background: var(--box-color);
+  border-radius: 0 0 0.5rem 0.5rem;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+/* Expand on hover */
+.accordion li:hover .content {
+  max-height: 300px; /* ajustez selon la longueur */
+  padding: 1rem 1.5rem;
+}
+
+/* Content paragraph */
+.accordion .content p {
+  margin: 0;
+  text-align: left;
+  line-height: 1.6;
+  color: var(--text);
 }
